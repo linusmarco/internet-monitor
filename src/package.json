@@ -1,19 +1,22 @@
 {
-  "name": "internet-monitor",
-  "version": "0.0.0",
-  "description": "Utility to gather, store, and serve internet speed data",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/linusmarco/internet-monitor.git"
-  },
-  "author": "Linus Marco",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/linusmarco/internet-monitor/issues"
-  },
-  "homepage": "https://github.com/linusmarco/internet-monitor#readme"
+    "name": "internet-monitor",
+    "version": "0.0.0",
+    "description": "Utility to gather, store, and serve internet speed data",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/linusmarco/internet-monitor.git"
+    },
+    "author": "Linus Marco",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/linusmarco/internet-monitor/issues"
+    },
+    "homepage": "https://github.com/linusmarco/internet-monitor#readme",
+    "dependencies": {
+        "mongodb": "^2.2.25"
+    }
 }
