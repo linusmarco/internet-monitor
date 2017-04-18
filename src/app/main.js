@@ -13,9 +13,3 @@ db.connect(dbName, function(database) {
         });
     });
 });
-//console.log(database);
-//collection = db.getCollection(database, collName);
-//console.log(collection);
-
-//data = gather.getSpeeds();
-//db.insert(collection, data);
