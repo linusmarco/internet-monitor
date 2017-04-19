@@ -1,15 +1,16 @@
 const db = require('./db.js');
 const gather = require('./gather.js');
 
-dbName = "speeds";
-collName = "measurements";
+const dbName = "speeds";
+const collName = "measurements";
 
-db.connect(dbName, function(database) {
-    db.getCollection(database, collName, function(collection) {
-        gather.speeds(function(data) {
-            db.insert(collection, data, function(data) {
-                console.log(data)
-            });
-        });
-    });
-});
+const recordSpeed = function(collection) {
+    gather.speeds()
+        .then(s => db.insert(collection, s));
+}
+
+db.connect(dbName)
+    .then(d => db.getCollection(d, collName))
+    .then(c => recordSpeed(c))
+    .catch(e => console.error(e));
+

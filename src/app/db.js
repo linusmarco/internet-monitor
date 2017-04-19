@@ -1,40 +1,43 @@
 const mongoClient = require('mongodb').MongoClient;
 
 module.exports = {
-    connect : function(dbName, callback) {
-         return mongoClient.connect("mongodb://localhost:27017/" + dbName, function(err, db) {
-            if(err) { 
-                console.error(err);
-                return null;
-            } else {
-                console.dir("Connected to '" + dbName + "'");
-                callback(db);
-            }
+    connect : function(dbName) {
+         return new Promise(function(resolve, reject) {
+            mongoClient.connect("mongodb://localhost:27017/" + dbName, function(err, db) {
+                if(err) { 
+                    reject(err);
+                } else {
+                    console.dir("Connected to '" + dbName + "'");
+                    resolve(db);
+                }
+            });
+         });
+    },
+
+    getCollection : function(db, collName) {
+        return new Promise(function(resolve, reject) {
+            db.collection(collName, { strict:true }, function(err, collection) {
+                if (err) { 
+                    reject(err);
+                } else {
+                    console.dir("Connected to collection '" + collName + "'");
+                    resolve(collection);
+                }
+            });
         });
     },
 
-    getCollection : function(db, collName, callback) {
-        return db.collection(collName, { strict:true }, function(err, collection) {
-            if (err) { 
-                console.error(err);
-                return null;
-            } else {
-                console.dir("Connected to collection '" + collName + "'");
-                callback(collection);
-            }
+    insert : function(collection, doc) {
+        return new Promise(function(resolve, reject) {
+            collection.insert(doc, { w:1 }, function(err, result) { 
+                if (err) { 
+                    reject(err);
+                } else {
+                    console.dir("Inserted speeds into database");
+                    resolve(doc);
+                }
+            });
         });
-    },
-
-    insert : function(collection, doc, callback) {
-        return collection.insert(doc, { w:1 }, function(err, result) { 
-            if (err) { 
-                console.error(err);
-                return null;
-            } else {
-                console.dir("Inserted speeds into database");
-                callback(doc);
-            }
-        });    
     }
 }
 
