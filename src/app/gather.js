@@ -8,7 +8,6 @@ const getSpeeds = function() {
         
         speedTest({maxTime: 5000})
             .on('data', data => {
-                console.log("Retrieved speed data");
                 data["time"] = now;
                 resolve(data);
             })

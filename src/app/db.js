@@ -7,7 +7,6 @@ module.exports = {
                 if(err) { 
                     reject(err);
                 } else {
-                    console.dir("Connected to '" + dbName + "'");
                     resolve(db);
                 }
             });
@@ -20,7 +19,6 @@ module.exports = {
                 if (err) { 
                     reject(err);
                 } else {
-                    console.dir("Connected to collection '" + collName + "'");
                     resolve(collection);
                 }
             });
@@ -33,7 +31,6 @@ module.exports = {
                 if (err) { 
                     reject(err);
                 } else {
-                    console.dir("Inserted speeds into database");
                     resolve(doc);
                 }
             });
