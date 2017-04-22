@@ -1,9 +1,9 @@
 const mongoClient = require('mongodb').MongoClient;
 
 module.exports = {
-    connect : function(dbName) {
+    connect : function(dbPath) {
          return new Promise(function(resolve, reject) {
-            mongoClient.connect("mongodb://localhost:27017/" + dbName, function(err, db) {
+            mongoClient.connect(dbPath, function(err, db) {
                 if(err) { 
                     reject(err);
                 } else {

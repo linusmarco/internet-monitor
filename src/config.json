@@ -1,0 +1,8 @@
+{
+    "db": {
+        "mongoPath":"mongodb://localhost:27017/",
+        "dbName":"speeds",
+        "collName": "measurements"
+    },
+    "measurementInterval": 60000
+}
